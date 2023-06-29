@@ -11,6 +11,7 @@ function createGrid(dim = 16) {
     aDiv.style.border = '1px dotted lightgrey';
     aDiv.style.textAlign = 'center';
     aDiv.classList.add('grid-item');
+    aDiv.dataset.intensity = 0.1;
 
     container.appendChild(aDiv);
   }
@@ -51,7 +52,10 @@ go.addEventListener('click', recreateGrid);
 
 function fillItem(e) {
   if (e.target.classList.contains('grid-item')) {
-    e.target.style.backgroundColor = 'black';
+    e.target.style.backgroundColor = `rgba(0,0,0,${e.target.dataset.intensity})`;
+    if ((e.target.dataset.intensity * 10) < 10) {
+      e.target.dataset.intensity = ((e.target.dataset.intensity * 10) + 1)/10;
+    }
   }
 
   e.stopPropagation();
