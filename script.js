@@ -6,21 +6,18 @@ function createGrid(dim = 16) {
   for (let i = 0; i < dim*dim; i++) {
     const aDiv = document.createElement('div');
     aDiv.style.width = `${Math.floor(100/dim * 100) / 100}%`;
-    aDiv.style.height = '40px';
+    aDiv.style.height = `${Math.floor(960/dim * 100) / 100}px`;
     aDiv.style.border = '1px solid black';
-    aDiv.textContent = +(i+1);
-    aDiv.style.border = '1';
+    aDiv.style.border = '1px dotted lightgrey';
     aDiv.style.textAlign = 'center';
-    aDiv.classList.add('gridItem');
+    aDiv.classList.add('grid-item');
 
     container.appendChild(aDiv);
   }
 }
 
 function removeGrid() {
-  const divs = document.querySelectorAll('div.gridItem');
-
-  console.log(divs);
+  const divs = document.querySelectorAll('div.grid-item');
 
   divs.forEach(aDiv => {
     container.removeChild(aDiv);
@@ -51,3 +48,13 @@ function validateInput() {
 createGrid();
 
 go.addEventListener('click', recreateGrid);
+
+function fillItem(e) {
+  if (e.target.classList.contains('grid-item')) {
+    e.target.style.backgroundColor = 'black';
+  }
+
+  e.stopPropagation();
+}
+
+container.addEventListener('mouseover', fillItem);

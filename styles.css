@@ -4,10 +4,15 @@
 
 body > div.container {
   max-width: 960px;
+  min-width: 960px;
+  height: 960px;
+  min-height: 960px;
   margin: 0 auto;
   padding: 0;
   display: flex;
   flex-wrap: wrap;
+  flex-shrink: 0;
+  gap: 0;
 }
 
 div.gridItem {
