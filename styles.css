@@ -3,26 +3,59 @@
 }
 
 body {
-  background-color: #1f2937;
+  background-color: rgba(31, 41, 55, 0.75);
   color: white;
 }
 
 div.controls {
   display: flex;
-  max-width: 960px;
-  min-width: 960px;
+  max-width: 1000px;
+  min-width: 1000px;
   height: 30px;
-  margin: 24px auto;
+  margin: 18px auto;
   justify-content: space-between;
   align-items: center;
 }
 
-body > div.container {
-  max-width: 960px;
-  min-width: 960px;
-  height: 960px;
-  min-height: 960px;
+div.draw-area {
+  max-width: 1000px;
+  min-width: 1000px;
+  display: flex;
   margin: 0 auto;
+  padding: 0;
+  gap: 10px;
+}
+
+div.palette {
+  width: 180px;
+  height: 50px;
+  background-color: #000;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+div.palette > p {
+  font-size: 1.5rem;
+}
+
+button.pen,
+button.clear  {
+  width: 180px;
+  padding: 8px;
+}
+
+button.clear {
+  margin-top:16px;
+}
+
+div.container {
+  max-width: 800px;
+  min-width: 800px;
+  height: 800px;
+  min-height: 800px;
   padding: 0;
   display: flex;
   flex-wrap: wrap;
