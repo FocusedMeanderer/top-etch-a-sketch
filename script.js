@@ -1,9 +1,11 @@
 const container = document.querySelector('div.container');
+const go = document.querySelector('button.go');
+let   newDim = 16;
 
 function createGrid(dim = 16) {
   for (let i = 0; i < dim*dim; i++) {
     const aDiv = document.createElement('div');
-    aDiv.style.width = `${Math.floor(100/16 * 100) / 100}%`;
+    aDiv.style.width = `${Math.floor(100/dim * 100) / 100}%`;
     aDiv.style.height = '40px';
     aDiv.style.border = '1px solid black';
     aDiv.textContent = +(i+1);
@@ -25,4 +27,27 @@ function removeGrid() {
   });
 }
 
+function recreateGrid(e){
+  if (validateInput()) {
+    removeGrid();
+    createGrid(newDim);
+  }
+  else {
+    alert('Check your input!')
+  }
+}
+
+function validateInput() {
+  newDim = document.querySelector('input#dimension').value;
+
+  if (Number.isInteger(+newDim) && (+newDim > 0 && +newDim <= 100)) {
+    newDim = +newDim;
+    return true;
+  }
+
+  return false;
+}
+
 createGrid();
+
+go.addEventListener('click', recreateGrid);

@@ -3,7 +3,7 @@
 }
 
 body > div.container {
-  width: 90%;
+  max-width: 960px;
   margin: 0 auto;
   padding: 0;
   display: flex;
