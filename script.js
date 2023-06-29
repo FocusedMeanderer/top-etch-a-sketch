@@ -9,7 +9,7 @@ const PENS = {
   yellow: { r: 255, g: 255, b: 0   },
   green:  { r: 0,   g: 255, b: 0   },
   blue:   { r: 0,   g: 0,   b: 255 },
-  indigo: { r: 750, g: 0,   b: 130 },
+  indigo: { r: 75,  g: 0,   b: 130 },
   violet: { r: 238, g: 130, b: 238 },
   kaleidoscope: { r: -1, g: -1, b: -1 }
 }
