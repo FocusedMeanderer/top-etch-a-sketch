@@ -17,6 +17,7 @@ let pen = PENS['black'];
 
 const clear = document.querySelector('button.clear');
 const colors = document.querySelector('div.colors');
+const dimension = document.querySelector('input#dimension');
 
 function createGrid(dim = 16) {
   for (let i = 0; i < dim*dim; i++) {
@@ -67,6 +68,13 @@ createGrid();
 go.addEventListener('click', recreateGrid);
 clear.addEventListener('click', clearCanvas);
 colors.addEventListener('click', setPenColor);
+dimension.addEventListener('keydown', handleDimension);
+
+function handleDimension(e) {
+  if (e.code === 'Enter' || e.code === 'NumpadEnter') {
+    recreateGrid();
+  }
+}
 
 function setPenColor(e) {
   if (e.target.classList.contains('pen')) {
@@ -96,7 +104,11 @@ function clearCanvas(e) {
 function fillItem(e) {
   if (e.target.classList.contains('grid-item')) {
     if (pen['r'] === -1 && pen['g'] === -1 && pen['b'] === -1) {
-      e.target.style.backgroundColor = `rgba(${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)},${e.target.dataset.intensity})`;
+      e.target.style.backgroundColor = `rgba( \
+          ${Math.floor(Math.random() * 256)}, \
+          ${Math.floor(Math.random() * 256)}, \
+          ${Math.floor(Math.random() * 256)}, \
+          ${e.target.dataset.intensity})`;
     }
     else {
       e.target.style.backgroundColor = `rgba(${pen['r']},${pen['g']},${pen['b']},${e.target.dataset.intensity})`;
